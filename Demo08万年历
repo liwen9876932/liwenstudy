@@ -1,0 +1,163 @@
+import java.util.Scanner;
+//打印一个月的
+class Demo08 {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		//输入年数
+		System.out.println("请输入年份:");
+		int years=sc.nextInt();
+		System.out.println("请输入月份:");
+		int mons=sc.nextInt();
+		//求和2019到1900天数
+		int pcount=0;
+		int rcount=0;
+		//循环1900到 输入年数-1 年当中的年数
+		for(int i=1900;i<years;i++){
+			//是否是闰年
+		if(i%400==0||((i%4==0)&&((i%100)!=0))){
+			//平年出现的次数
+			pcount+=1;
+		}else{
+			//闰年出现的次数
+			rcount+=1;
+		}
+	}
+	//计算1900到 输入年数-1 年的天数
+	//平年365天  闰年366天
+		int rday=pcount*366;
+		int pday=rcount*365;
+		int sum=rday+pday;
+		/*
+		System.out.println(sum);
+		int sum2=sum;
+		*/
+	//判断本年为平年闰年.
+	//定义一个二月数字
+	//int eryuenum=0;
+/*
+	if(YesPing%400==0||((YesPing%4==0)&&((YesPing%100)!=0))){
+			eryuenum=29;
+		}else{
+			eryuenum=28;
+			}
+	
+*/
+
+	//判断月份进行打印
+/*
+//测试1月2月3月找共同点
+switch(YesPing){
+		case 1:
+		System.out.println("日\t一\t二\t三\t四\t五\t六");
+		int week=(sum%7);
+		 for (int i = 0; i < week; i++) {
+			 //制表符补天数,缺几天补几天.
+               System.out.print("\t");
+         }
+			for(int i=1;i<=31;i++){
+			System.out.print(i);
+			System.out.print("\t");
+			//假如一行够7天进行回车换行操作
+				if((i+week)%7==0){
+				System.out.print("\n");
+				}
+			}
+			System.out.println();
+		break;
+		case 2:
+			System.out.println("日\t一\t二\t三\t四\t五\t六");
+		week=((sum+31)%7);
+		 for (int i = 0; i < week; i++) {
+			 //制表符补天数,缺几天补几天.
+               System.out.print("\t");
+         }
+			for(int i=1;i<=31;i++){
+			System.out.print(i);
+			System.out.print("\t");
+			//假如一行够7天进行回车换行操作
+				if((i+week)%7==0){
+				System.out.print("\n");
+				}
+			}
+			System.out.println();
+			break;
+		case 3:
+
+		System.out.println("日\t一\t二\t三\t四\t五\t六");
+		week=((sum+31+eryuenum)%7);
+		 for (int i = 0; i < week; i++) {
+			 //制表符补天数,缺几天补几天.
+               System.out.print("\t");
+         }
+			for(int i=1;i<=31;i++){
+			System.out.print(i);
+			System.out.print("\t");
+			//假如一行够7天进行回车换行操作
+				if((i+week)%7==0){
+				System.out.print("\n");
+				}
+			}
+			System.out.println();
+			break;
+		
+		}
+	*/	
+		//定义一个天数来存储每回循环存储的天数是几月就存储几天
+		int day=0;
+		for(int i = 1; i <=mons ; i++){
+			//i=1 i<12 i++循环12回
+			switch(i){
+			case 1:
+			case 3:
+			case 5:
+			case 7:
+			case 8:
+			case 10:
+			case 12:
+				day = 31;
+				break;
+			case 4:
+			case 6:
+			case 9:
+			case 11:
+				day = 30;
+				break;
+			case 2:
+				if((sum % 400 == 0) || (sum % 4 == 0 && sum % 100 != 0) ){
+					day = 29;
+				}else{
+					day = 28;
+				}
+				break;
+			   }
+			   if(i < mons){
+				 sum += day;
+   }
+  /*
+   //调试程序
+   System.out.println(sum);
+   System.out.println(sum-sum2);
+  */
+			}
+		System.out.println("日\t一\t二\t三\t四\t五\t六");
+		//三月输出,二月加一天就是三月第一天
+		int week=(sum+1)%7;
+		 for (int i = 0; i <week; i++) {
+			 //制表符补天数,缺几天补几天.
+               System.out.print("\t");
+         }
+			for(int i=1;i<=day;i++){
+			System.out.print(i);
+			System.out.print("\t");
+			//假如一行够7天进行回车换行操作
+				if((i+week)%7==0){
+				System.out.print("\n");
+				}
+			}
+			System.out.println();
+			
+
+		}
+	
+}
+
